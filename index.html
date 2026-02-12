@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light scroll-smooth" lang="nl"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jazzas Cuts &amp; Care - Kapper Rotterdam</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Sora:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2D5A3D", /* Forest Green override to match spec */
+                        "primary-dark": "#1e3e2a",
+                        "accent": "#D4A853", /* Gold */
+                        "cream": "#F5F0EB",
+                        "charcoal": "#2D2D2D",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#161c18",
+                    },
+                    fontFamily: {
+                        "display": ["Sora", "Manrope", "sans-serif"], /* Using Sora as requested */
+                        "body": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles for specific layout needs */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D4A853 0%, #F3D99F 50%, #D4A853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+        
+        /* Stagger children */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 120ms; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 240ms; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 360ms; }
+        .stagger > .reveal:nth-child(5) { transition-delay: 480ms; }
+        .stagger > .reveal:nth-child(6) { transition-delay: 600ms; }
+        
+        /* Hero animations */
+        .hero-fade { animation: heroFade 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+        .hero-fade-d1 { animation: heroFade 1.2s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+        .hero-fade-d2 { animation: heroFade 1.2s cubic-bezier(0.16,1,0.3,1) 0.9s both; }
+        @keyframes heroFade { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+        
+        /* Gold shimmer */
+        .gold-shimmer {
+            background: linear-gradient(110deg, #D4A853 0%, #F3D99F 25%, #D4A853 50%, #FFD700 75%, #D4A853 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldShimmer 4s linear infinite;
+        }
+        @keyframes goldShimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        
+        /* Card hover lift */
+        .card-lift { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; }
+        .card-lift:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(45,90,61,0.12); }
+        
+        /* Pulse gold CTA */
+        .pulse-gold { animation: pulseGold 2.5s ease-in-out infinite; }
+        @keyframes pulseGold { 0%,100% { box-shadow: 0 0 0 0 rgba(212,168,83,0.4); } 50% { box-shadow: 0 0 25px 8px rgba(212,168,83,0); } }
+        
+        /* Counter */
+        .count-up { display: inline-block; }
+        
+        /* Navbar scroll */
+        .nav-scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.1) !important; }
+        
+        /* Star pop */
+        .star-pop { animation: starPop 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+        .star-pop:nth-child(1) { animation-delay: 0ms; }
+        .star-pop:nth-child(2) { animation-delay: 100ms; }
+        .star-pop:nth-child(3) { animation-delay: 200ms; }
+        .star-pop:nth-child(4) { animation-delay: 300ms; }
+        .star-pop:nth-child(5) { animation-delay: 400ms; }
+        @keyframes starPop { from { opacity:0; transform:scale(0) rotate(-20deg); } to { opacity:1; transform:scale(1) rotate(0); } }
+    </style>
+</head>
+<body class="font-display antialiased bg-background-light dark:bg-background-dark text-charcoal dark:text-gray-100">
+<!-- Navigation -->
+<nav class="fixed w-full z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex-shrink-0 flex items-center gap-2">
+<span class="material-icons text-primary text-3xl">content_cut</span>
+<span class="font-bold text-xl tracking-tight text-charcoal dark:text-white uppercase">Jazzas <span class="text-accent">Cuts &amp; Care</span></span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-charcoal dark:text-gray-300 hover:text-primary dark:hover:text-accent font-medium transition-colors" href="#diensten">Diensten</a>
+<a class="text-charcoal dark:text-gray-300 hover:text-primary dark:hover:text-accent font-medium transition-colors" href="#over-ons">Over Ons</a>
+<a class="text-charcoal dark:text-gray-300 hover:text-primary dark:hover:text-accent font-medium transition-colors" href="#locatie">Locatie</a>
+<a class="bg-accent hover:bg-yellow-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors shadow-md transform hover:-translate-y-0.5" href="#afspraak">
+                        Maak Afspraak
+                    </a>
+</div>
+<!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center">
+<button class="text-charcoal dark:text-white hover:text-primary p-2">
+<span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Interior of a warm barbershop with leather chairs and wooden details" class="w-full h-full object-cover" data-alt="Warm barbershop interior with leather chairs and wood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNM8Ivz7BaPucLTabvHRcFSCp-y6Fo5biz55VfvFE9IdWLzf5ZQIeKjuX4DYb-drTRamcILfoIs8YeeXt-wQ7yB_k0vfc0i1MXUn2V9qAeSBsQZQ4CJdEMtN23LG2Ot3akVp508ybyx0jlezCpYflaj_KXXe_LQYHKkIZtqKxX4dyVucGszzeDmI6LRhn-a4Gct_X2VCQX4hBpfXFo-GOkh7QU6BG6XrtJpKkiHj-uhwIEIO_9UWg71oapaRpyjO0PQYnWHRcRuwY"/>
+<div class="absolute inset-0 bg-charcoal/60 dark:bg-black/70"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+<h1 class="hero-fade text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                Jouw Stijl, <span class="gold-shimmer">Onze Passie</span>
+</h1>
+<p class="hero-fade-d1 text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Welkom bij Jazzas Cuts &amp; Care — waar vakmanschap en verzorging samenkomen in het hart van Rotterdam.
+            </p>
+<div class="hero-fade-d2 flex flex-col sm:flex-row gap-4 justify-center items-center">
+<a class="pulse-gold w-full sm:w-auto bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1" href="#afspraak">
+                    Maak Afspraak
+                </a>
+<a class="w-full sm:w-auto bg-transparent border-2 border-white hover:border-accent hover:text-accent text-white px-8 py-4 rounded-lg font-bold text-lg transition-all" href="#diensten">
+                    Bekijk Diensten
+                </a>
+</div>
+<div class="mt-12 flex items-center justify-center gap-2 text-accent font-semibold text-lg">
+<span class="material-icons">phone_iphone</span>
+<a class="hover:underline" href="tel:0635635922">06 35 63 59 22</a>
+</div>
+</div>
+</header>
+<!-- Diensten Section -->
+<section class="py-24 bg-cream dark:bg-background-dark" id="diensten">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 reveal">
+<h2 class="text-primary dark:text-accent text-lg font-bold uppercase tracking-wider mb-2">Onze Expertise</h2>
+<h3 class="text-4xl font-bold text-charcoal dark:text-white mb-4">Diensten &amp; Prijzen</h3>
+<div class="h-1 w-20 bg-accent mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger">
+<!-- Service Card 1 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">content_cut</span>
+</div>
+<span class="text-accent font-bold text-xl">€30</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Knippen Heren</h4>
+<p class="text-gray-600 dark:text-gray-300">Een volledige knipbeurt inclusief wassen en styling advies op maat.</p>
+</div>
+<!-- Service Card 2 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">face</span>
+</div>
+<span class="text-accent font-bold text-xl">€20</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Knippen Kinderen</h4>
+<p class="text-gray-600 dark:text-gray-300">Geduldig en vakkundig knippen voor de jonge heren (t/m 12 jaar).</p>
+</div>
+<!-- Service Card 3 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">content_paste</span>
+</div>
+<span class="text-accent font-bold text-xl">€25</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Baard Trimmen</h4>
+<p class="text-gray-600 dark:text-gray-300">Nauwkeurig trimmen en contouren voor een strakke, verzorgde baard.</p>
+</div>
+<!-- Service Card 4 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">soap</span>
+</div>
+<span class="text-accent font-bold text-xl">€35</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Hot Towel Shave</h4>
+<p class="text-gray-600 dark:text-gray-300">De klassieke scheerervaring met warme handdoeken en luxe scheerzeep.</p>
+</div>
+<!-- Service Card 5 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">spa</span>
+</div>
+<span class="text-accent font-bold text-xl">€45</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Full Care</h4>
+<p class="text-gray-600 dark:text-gray-300">Combinatie van knippen, baardverzorging en een ontspannende gezichtsbehandeling.</p>
+</div>
+<!-- Service Card 6 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-t-4 border-primary group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary/10 p-3 rounded-lg group-hover:bg-primary transition-colors">
+<span class="material-icons text-primary group-hover:text-white text-3xl">brush</span>
+</div>
+<span class="text-accent font-bold text-xl">€15</span>
+</div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-2">Styling</h4>
+<p class="text-gray-600 dark:text-gray-300">Wassen, drogen en stylen met premium producten voor een avond uit.</p>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a class="inline-flex items-center gap-2 text-primary dark:text-accent font-bold hover:underline text-lg" href="#afspraak">
+                    Bekijk volledige prijslijst <span class="material-icons text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Over Ons Section -->
+<section class="bg-primary dark:bg-primary-dark" id="over-ons">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2">
+<!-- Image Side -->
+<div class="reveal-left relative h-96 lg:h-auto min-h-[500px]">
+<img alt="Barber carefully trimming a client's beard in a dim, moody setting" class="absolute inset-0 w-full h-full object-cover" data-alt="Barber working on a client with focus and care" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsDhUAlpl-SmJySVKd3Lg-XHxkJZ4enBuVfs_fcwhAOrdjlxPbjnEmlhybZwR0axoTux-IdPJNJA_ROGcVo3TV8pUPPs8amRhyZxfm8DCglnLG0vgmRIoT2dC64XLQigl-8RfVSaadKPDYrabs-HjpfDnVzjQO_TB3h-o9iF0y0q77SLDv_zShwExnj-gFcgYpAUK1793qdj4wQHz96wMspHJHJVxDSI8YwiIf4J6K37_4pX6ibGKrX1cPEUTeUy6cImEvgsF_SoE"/>
+<!-- Decorative border inside image -->
+<div class="absolute inset-8 border-2 border-accent/30 hidden lg:block"></div>
+</div>
+<!-- Content Side -->
+<div class="reveal-right p-10 lg:p-20 flex flex-col justify-center">
+<h2 class="text-accent font-bold uppercase tracking-wider mb-2">Over Jazzas</h2>
+<h3 class="text-3xl md:text-4xl font-bold text-cream mb-6">Meer dan alleen een knipbeurt</h3>
+<p class="text-cream/90 mb-6 leading-relaxed text-lg font-light">
+                        Bij Jazzas Cuts &amp; Care geloven we dat een bezoek aan de kapper een moment voor jezelf moet zijn. In onze stoel draait het niet alleen om het resultaat, maar om de ervaring. 
+                    </p>
+<p class="text-cream/90 mb-10 leading-relaxed text-lg font-light">
+                        We combineren traditionele technieken met moderne trends, en nemen de tijd om te luisteren naar wat jij wilt. Of je nu komt voor een snelle touch-up of een uitgebreide 'care' behandeling, je verlaat onze zaak met hernieuwd zelfvertrouwen.
+                    </p>
+<div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
+<div>
+<span class="block text-4xl font-bold text-accent mb-1 count-up" data-target="5" data-suffix="+">0</span>
+<span class="text-sm text-cream/70 uppercase tracking-widest">Jaren Ervaring</span>
+</div>
+<div>
+<span class="block text-4xl font-bold text-accent mb-1 count-up" data-target="500" data-suffix="+">0</span>
+<span class="text-sm text-cream/70 uppercase tracking-widest">Tevreden Klanten</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="py-24 bg-cream dark:bg-background-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16 reveal">
+<h2 class="text-3xl md:text-4xl font-bold text-charcoal dark:text-white mb-4">Wat klanten zeggen</h2>
+<div class="flex justify-center gap-1 text-accent mb-2">
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+</div>
+<p class="text-gray-500">Gebaseerd op Google Reviews</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+<!-- Review 1 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-md relative">
+<span class="material-icons text-6xl text-primary/10 absolute top-4 right-4">format_quote</span>
+<div class="flex gap-1 text-accent mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-gray-700 dark:text-gray-300 italic mb-6">"Eindelijk een kapper die echt de tijd neemt. De sfeer is relaxed en ik ben super blij met mijn nieuwe coupe. Aanrader voor iedereen in Rotterdam!"</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary font-bold">M</div>
+<div>
+<p class="font-bold text-charcoal dark:text-white text-sm">Mark de Jong</p>
+<p class="text-xs text-gray-500">Klant sinds 2021</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-md relative mt-0 md:-mt-4 border-b-4 border-accent">
+<span class="material-icons text-6xl text-primary/10 absolute top-4 right-4">format_quote</span>
+<div class="flex gap-1 text-accent mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-gray-700 dark:text-gray-300 italic mb-6">"Top service. De hot towel shave is echt een verwenmoment. Professioneel, schoon en gezellig. Ik kom hier elke maand terug."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary font-bold">D</div>
+<div>
+<p class="font-bold text-charcoal dark:text-white text-sm">Dennis Visser</p>
+<p class="text-xs text-gray-500">Vaste klant</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="reveal card-lift bg-white dark:bg-charcoal p-8 rounded-xl shadow-md relative">
+<span class="material-icons text-6xl text-primary/10 absolute top-4 right-4">format_quote</span>
+<div class="flex gap-1 text-accent mb-4">
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+<span class="material-icons text-sm">star</span>
+</div>
+<p class="text-gray-700 dark:text-gray-300 italic mb-6">"Geweldig met kinderen! Mijn zoontje vindt het meestal vreselijk bij de kapper, maar hier voelde hij zich meteen op zijn gemak."</p>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-primary font-bold">S</div>
+<div>
+<p class="font-bold text-charcoal dark:text-white text-sm">Sophie van Dam</p>
+<p class="text-xs text-gray-500">Moeder van Tom (8)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Locatie & Contact Section -->
+<section class="relative" id="locatie">
+<div class="flex flex-col lg:flex-row">
+<!-- Contact Form -->
+<div class="reveal-left w-full lg:w-1/2 bg-charcoal p-10 lg:p-20 flex items-center" id="afspraak">
+<div class="w-full max-w-lg mx-auto">
+<h2 class="text-accent font-bold uppercase tracking-wider mb-2">Contact</h2>
+<h3 class="text-3xl md:text-4xl font-bold text-white mb-8">Maak een afspraak</h3>
+<form class="space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2" for="first-name">Voornaam</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" id="first-name" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2" for="last-name">Achternaam</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" id="last-name" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2" for="email">Email</label>
+<input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" id="email" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2" for="service">Dienst</label>
+<select class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors [&amp;&gt;option]:text-charcoal" id="service">
+<option>Knippen Heren</option>
+<option>Knippen Kinderen</option>
+<option>Baard Trimmen</option>
+<option>Hot Towel Shave</option>
+<option>Anders</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-300 mb-2" for="message">Bericht (Optioneel)</label>
+<textarea class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" id="message" rows="4"></textarea>
+</div>
+<button class="w-full bg-accent hover:bg-yellow-600 text-white font-bold py-4 rounded-lg shadow-lg transition-all transform hover:-translate-y-1" type="button">
+                            Verzend Aanvraag
+                        </button>
+</form>
+</div>
+</div>
+<!-- Map & Info -->
+<div class="reveal-right w-full lg:w-1/2 bg-white dark:bg-background-dark relative min-h-[500px]">
+<!-- Google Maps Embed -->
+<div class="h-1/2 w-full relative overflow-hidden">
+<iframe src="https://maps.google.com/maps?q=Asterlo+35,+3085+AD+Rotterdam,+Netherlands&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Jazzas Cuts & Care locatie"></iframe>
+</div>
+<div class="h-1/2 w-full p-10 lg:p-16 bg-cream dark:bg-gray-800 flex flex-col justify-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons text-primary dark:text-accent">storefront</span> Locatie
+                            </h4>
+<p class="text-gray-600 dark:text-gray-300 mb-1">Jazzas Cuts &amp; Care</p>
+<p class="text-gray-600 dark:text-gray-300 mb-1">Asterlo 35</p>
+<p class="text-gray-600 dark:text-gray-300">3085 AD Rotterdam</p>
+<div class="mt-6">
+<a class="inline-flex items-center gap-2 bg-[#25D366] text-white px-4 py-2 rounded-lg font-bold hover:bg-[#20bd5a] transition-colors shadow-sm" href="https://wa.me/31635635922">
+<span class="material-icons text-lg">chat</span> WhatsApp Ons
+                                </a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold text-charcoal dark:text-white mb-4 flex items-center gap-2">
+<span class="material-icons text-primary dark:text-accent">schedule</span> Openingstijden
+                            </h4>
+<ul class="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
+<li class="flex justify-between"><span>Maandag</span> <span>Gesloten</span></li>
+<li class="flex justify-between"><span>Dinsdag</span> <span>10:00 - 18:00</span></li>
+<li class="flex justify-between"><span>Woensdag</span> <span>10:00 - 18:00</span></li>
+<li class="flex justify-between"><span>Donderdag</span> <span>10:00 - 20:00</span></li>
+<li class="flex justify-between font-bold text-primary dark:text-accent"><span>Vrijdag</span> <span>10:00 - 20:00</span></li>
+<li class="flex justify-between"><span>Zaterdag</span> <span>09:00 - 17:00</span></li>
+<li class="flex justify-between"><span>Zondag</span> <span>Gesloten</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-charcoal border-t border-white/5 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary text-3xl">content_cut</span>
+<span class="font-bold text-xl text-white uppercase">Jazzas <span class="text-accent">Cuts &amp; Care</span></span>
+</div>
+<div class="flex gap-6">
+<a class="text-gray-400 hover:text-accent transition-colors" href="#"><span class="sr-only">Facebook</span>
+<svg class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-accent transition-colors" href="#"><span class="sr-only">Instagram</span>
+<svg class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.072 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+<p>© 2025 Jazzas Cuts &amp; Care. Alle rechten voorbehouden.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors" href="#">Privacybeleid</a>
+<a class="hover:text-white transition-colors" href="#">Algemene Voorwaarden</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp Button (Fixed Position) -->
+<a class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all flex items-center justify-center" href="https://wa.me/31635635922">
+<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+</a>
+<script>
+// Scroll Reveal
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => {
+    new IntersectionObserver((entries,obs) => {
+        entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }).observe(el);
+});
+
+// Counter Animation
+document.querySelectorAll('.count-up').forEach(el => {
+    new IntersectionObserver((entries,obs) => {
+        entries.forEach(e => {
+            if(e.isIntersecting) {
+                const t=parseInt(e.target.dataset.target), s=e.target.dataset.suffix||'';
+                let c=0; const step=Math.max(1,Math.floor(t/50));
+                const timer=setInterval(()=>{ c+=step; if(c>=t){c=t;clearInterval(timer);} e.target.textContent=c+s; },25);
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.5 }).observe(el);
+});
+
+// Navbar scroll
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('nav-scrolled',window.scrollY>60));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){ e.preventDefault(); const t=document.querySelector(this.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); });
+});
+
+// Parallax hero
+const heroImg=document.querySelector('section.relative img');
+if(heroImg) window.addEventListener('scroll',()=>{ if(window.scrollY<window.innerHeight) heroImg.style.transform='scale(1.08) translateY('+(window.scrollY*0.25)+'px)'; });
+
+// Star pop on review cards
+document.querySelectorAll('.reveal.card-lift .flex.gap-1').forEach(c=>{
+    new IntersectionObserver((entries,obs)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.querySelectorAll('.material-icons').forEach(s=>s.classList.add('star-pop')); obs.unobserve(e.target); } });
+    },{threshold:0.5}).observe(c);
+});
+</script>
+</body></html>
